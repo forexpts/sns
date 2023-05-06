@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}新規投稿{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    {% if user.is_authenticated%}
+        <h1>新規投稿</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="submit btn btn-primary">投稿する</button>
+        </form>
+    {% else %}
+        <p>ログインしてください</p>
+        <a href="{% url 'login' %}">ログイン</a>
+        <a href="{% url 'signup' %}">登録</a>
+    {% endif %}
+</div>
+
+{% endblock %}

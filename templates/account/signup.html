@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}登録フォーム{% endblock %}
+
+{% block content %}
+    <h1>登録フォーム</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="submit btn btn-primary" value="登録">登録</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ account.username }}{% endblock %}
+
+{% block content %}
+
+<h1>ユーザー情報</h1>
+<p>ユーザー名:{{ account.username }}
+    {% if account.avator %}
+    <img src="{{ account.avator.url }}" style="width: 50px;height: auto;""></img>
+    {% endif %}
+</p>
+<p>開始日:{{ account.date_joined }}</p>
+<p>フォロー数:{{ account.following_count }}</p>
+<p>フォロワー数:{{ account.follower_count }}</p>
+
+<form action="{% url 'follow' object.pk %}" style="display: inline-block;" method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-outline-info">フォロー</button>
+</form>
+
+{% endblock %}
